@@ -5,6 +5,22 @@
  * (Check)Create a copy constructor and a destructor.
  * Refer to the Project 3 sheet for checklist details... */ 
 
+//Error with overload function header
+template<class x>
+ostream& operator<<<x>(ostream& osObject, const doubly<x>& nodez)
+{
+  osObject << nodez->info; 
+}
+
+//Error with overload function header
+template<class x>
+istream& operator>><x>(istream isObject, const doubly<x>& nodez)
+{
+  x stuff; 
+  isObject >> stuff; 
+  nodez.insert(stuff); 
+}
+
 //constructor 
 template <class x>
 doubly<x>::doubly()
@@ -85,7 +101,7 @@ void doubly<x>::clear()
   while(first != NULL)
   {
     temp = first;
-    first = first -> next;
+    first = first -> nxt;
     delete temp; 
   }
 
@@ -116,7 +132,7 @@ void doubly<x>::print() const
   while (current != NULL)
   {
     cout << current->info << " "; 
-    current = current->next;
+    current = current->nxt;
   }
 }
 
@@ -146,7 +162,7 @@ bool doubly<x>::search(const x& item) const//delete this const and see what happ
     if (current->info >= item)
       found = true; 
     else 
-      current = current->next; 
+      current = current->nxt; 
 
     if (found)
       found = (current->info == item); 
@@ -289,4 +305,4 @@ void doubly<x>::deleteNode(const x& item)
   }
 }
 
-int main() {}
+int main(){ return 0;}

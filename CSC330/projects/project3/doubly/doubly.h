@@ -11,6 +11,9 @@ struct Dnode
 template <class x>
 class doubly
 {
+  friend ostream& operator<<<x>(ostream&, const doubly<x>& nodez); 
+  friend istream& operator>><x>(istream&, const doubly<x>& nodez); 
+
   protected: 
   int length; 
   Dnode<x> *first; 
