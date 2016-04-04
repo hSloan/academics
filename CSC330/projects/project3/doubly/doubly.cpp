@@ -1,30 +1,14 @@
 #include "doubly.h"
 
-/*Progress Report- Change edit the insert and delete funtion to 
+/*Progress Report- Change edit the insert and delete function to 
  * be an unsorted version. 
- * (Check)Create a copy constructor and a destructor.
  * Refer to the Project 3 sheet for checklist details... */ 
-
-//Error with overload function header
-template<class x>
-ostream& operator<<<x>(ostream& osObject, const doubly<x>& nodez)
-{
-  osObject << nodez->info; 
-}
-
-//Error with overload function header
-template<class x>
-istream& operator>><x>(istream isObject, const doubly<x>& nodez)
-{
-  x stuff; 
-  isObject >> stuff; 
-  nodez.insert(stuff); 
-}
 
 //constructor 
 template <class x>
 doubly<x>::doubly()
 {
+  cout << "empty doubly list created..." << endl; //DEBUG LINE  
   first = NULL; 
   last = NULL;
   length = 0;
@@ -73,18 +57,27 @@ doubly<x>::doubly(const doubly<x>& other)
 template <class x>
 doubly<x>::~doubly()
 {
-  Dnode<x> *temp;
+  cout << "destructor activated!" << endl; //DEBUG LINE   
+ // Dnode<x> *temp; 
 
   while (first != NULL)
   {
-    temp = first; 
+    Dnode<x> *temp;
+    cout << "inside while...";
+    temp = first;
+    cout << "temp = first...";  
     first = first->nxt;
-    first->bck = NULL; 
-    delete temp; 
+    cout << "first->nxt..."; 
+    first->bck = NULL;
+    cout << "first->bck...";  
+    delete temp;
+    cout << "node deleted...";  
   }
 
   last = NULL;
-  length = 0; 
+  length = 0;
+  
+  cout << "destructor completed!\n";  
 }
 
 template <class x>
@@ -206,6 +199,7 @@ void doubly<x>::insert(const x& item)
     first = newNode; 
     last = newNode;
     length++; 
+    cout << "first node added!\n"; //DEBUG LINE
   }
   else
   {
@@ -244,7 +238,8 @@ void doubly<x>::insert(const x& item)
           last = newNode;
         }
 
-        length++; 
+        length++;
+        cout << "length incremented!\n"; //DEBUG LINE  
       }
   }
 }
@@ -305,4 +300,4 @@ void doubly<x>::deleteNode(const x& item)
   }
 }
 
-int main(){ return 0;}
+//int main(){ return 0;}

@@ -8,18 +8,35 @@ struct Dnode
   Dnode<x> *nxt; 
 };
 
+
+
 template <class x>
 class doubly
 {
-  friend ostream& operator<<<x>(ostream&, const doubly<x>& nodez); 
-  friend istream& operator>><x>(istream&, const doubly<x>& nodez); 
-
   protected: 
   int length; 
   Dnode<x> *first; 
   Dnode<x> *last; 
   
   public:
+  
+   
+  friend ostream& operator<<(ostream& osObject, const doubly<x>& nodez)
+  {
+  osObject << nodez->info;
+
+  return osObject;
+  }
+
+  friend istream& operator>>(istream& isObject, const doubly<x>& nodez)
+  {
+    x stuff; 
+    isObject >> stuff; 
+    nodez.insert(stuff); 
+
+    return isObject;
+  }
+
   doubly(); //default constructor
   doubly(const doubly<x>& other); //copy constructor 
   ~doubly(); //destructors  
