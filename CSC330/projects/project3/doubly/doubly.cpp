@@ -58,21 +58,13 @@ template <class x>
 doubly<x>::~doubly()
 {
   cout << "destructor activated!" << endl; //DEBUG LINE   
- // Dnode<x> *temp; 
-
-  while (first != NULL)
-  {
     Dnode<x> *temp;
-    cout << "inside while...";
     temp = first;
-    cout << "temp = first...";  
     first = first->nxt;
-    cout << "first->nxt..."; 
     first->bck = NULL;
-    cout << "first->bck...";  
     delete temp;
+    delete first;
     cout << "node deleted...";  
-  }
 
   last = NULL;
   length = 0;
@@ -91,23 +83,17 @@ void doubly<x>::clear()
 {
   Dnode<x> *temp; //destructo pointer
 
-  while(first != NULL)
+  if (isEmpty() == 0)
   {
     temp = first;
-    first = first -> nxt;
-    delete temp; 
+    first = first->nxt;
+    first->bck = NULL;
+    delete temp;
   }
 
   last = NULL; 
   length = 0; 
 }
-
-template <class x>
-void doubly<x>::initialize()
-{
-  clear(); 
-}
-
 
 template <class x>
 int doubly<x>::getLength() const
@@ -139,7 +125,7 @@ void doubly<x>::reversePrint() const
   while (current != NULL)
   {
     cout << current->info << " "; 
-    current = current->back; 
+    current = current->bck; 
   }
 }
 
@@ -167,20 +153,21 @@ bool doubly<x>::search(const x& item) const//delete this const and see what happ
 template <class x>
 x doubly<x>::getFirst() const 
 {
-  assert(first != NULL); 
-
-  return first->info; 
+  if (first != NULL) 
+  {
+    return first->info;
+  }
 }
 
 template <class x>
 x doubly<x>::getLast() const
 {
-  assert(last != NULL);
-
-  return last->info; 
+  if (last != NULL)
+  {
+    return last->info;
+  }
 }
 
-//This function will have to be edited so that it does not insert nodes PRE SORTED
 template <class x>
 void doubly<x>::insert(const x& item)
 {
@@ -203,46 +190,20 @@ void doubly<x>::insert(const x& item)
   }
   else
   {
-    found = false; 
     current = first;
 
-    while (current != NULL && !found)//while not empty ^ item not found 
-      if (current->info >= item)
-        found = true; 
-      else
-      {
-        shadow = current; 
-        current = current->nxt; 
-      }
-
-      if (current == first) //for new node before first
-      {
-        first->bck = newNode; 
-        newNode->nxt = first; 
-        first = newNode; 
-        length++; 
-      }
-      else 
-      {
-        if (current != NULL) //insert in between
-        {
-          shadow->nxt = newNode; 
-          newNode->bck = shadow; 
-          newNode->nxt = current; 
-          current->bck = newNode; 
-        }
-        else //add node to the end 
-        {
-          shadow->nxt = newNode; 
-          newNode->bck = shadow;
-          last = newNode;
-        }
-
-        length++;
-        cout << "length incremented!\n"; //DEBUG LINE  
-      }
+    while (current != NULL && !found)//while not empty 
+    {
+      shadow = current; 
+      current = current->nxt; 
+      shadow->nxt = newNode; 
+      newNode->bck = shadow;
+      last = newNode;
+    }
+    length++;
+    cout << "length incremented!\n"; //DEBUG LINE  
+    }
   }
-}
 
 //revise this function to not operate on a PRE SORTED list
 template <class x>

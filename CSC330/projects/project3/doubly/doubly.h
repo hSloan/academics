@@ -41,7 +41,6 @@ class doubly
   doubly(const doubly<x>& other); //copy constructor 
   ~doubly(); //destructors  
   const doubly<x>& operator=(const doubly<x> &); 
-  void initialize(); 
   bool isEmpty() const; 
   void clear(); 
   void print() const; 
