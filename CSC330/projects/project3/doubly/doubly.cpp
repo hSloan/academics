@@ -78,6 +78,7 @@ bool doubly<x>::isEmpty() const
   return (first == NULL); 
 }
 
+//THIS NEEDS REVISING. RESET LINK LIST TO EMPTY
 template <class x>
 void doubly<x>::clear()
 {

@@ -1,3 +1,5 @@
+#ifndef doubly_H
+#define doubly_H
 #include <iostream>
 using namespace std; 
 template <class x>
@@ -52,4 +54,5 @@ class doubly
   void insert(const x& item); 
   void deleteNode(const x& item); 
 };
-     
+    
+#endif 
