@@ -49,7 +49,7 @@ doubly<x>::doubly(const doubly<x>& other)
        last->nxt = newNode;//point last next to newnode 
        newNode->bck = last; //pont new node back to last node 
        last = newNode; //make newnode the last 
-       otherPoint = otherPoint->link; //point to next node(maybe)
+       otherPoint = otherPoint->nxt; //point to next node(maybe)
      }
    }
 }

@@ -2,12 +2,11 @@
 #define LargeIntLink_H
 #include <iostream>
 #include <string>
-#include "doubly.h"
 #include "doubly.cpp" 
 using namespace std; 
 
 //LargeIntLink class inherits doubly class 
-class LargeIntLink : public doubly<int>
+class LargeIntLink : protected doubly<int>
 {
   friend ostream& operator<<(ostream& osObject, const LargeIntLink& bigNum)
   {
@@ -46,10 +45,9 @@ class LargeIntLink : public doubly<int>
  
   protected:
   int const maxDigits = 100; 
-  int digitLength;
   
   public:
-  LargeIntLink(); //void constructor
+  LargeIntLink():doubly<int>(){}; //void constructor
   
   LargeIntLink operator+(const LargeIntLink& numberB); 
   LargeIntLink operator-(const LargeIntLink& numberB); 

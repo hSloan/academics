@@ -1,49 +1,44 @@
 #include "LargeIntLink.h"
-template <int>
-LargeIntLink::LargeIntLink():doubly()
-{
-   
-}
 
 LargeIntLink LargeIntLink::operator+(const LargeIntLink& numberB)
 {
-  LargeIntLink temp();
+  LargeIntLink temp;
   //insert code here  
   return temp; 
 }
 
 
-LargeIntLink LargeIntLink::operator-(const LargeIntLength<x>& numberB)
+LargeIntLink LargeIntLink::operator-(const LargeIntLink& numberB)
 {
-  LargeIntLink temp();
+  LargeIntLink temp;
   //insert code here  
   return temp; 
 }
 
-LargeIntLink LargeIntLink::operator*(const LargeIntLength<x>& numberB)
+LargeIntLink LargeIntLink::operator*(const LargeIntLink& numberB)
 {
-  LargeIntLink temp();
+  LargeIntLink temp;
   //insert code here  
   return temp; 
 }
 
-LargeIntLink LargeIntLink::operator/(const LargeIntLength<x>& numberB)
+LargeIntLink LargeIntLink::operator/(const LargeIntLink& numberB)
 {
-  LargeIntLink temp();
+  LargeIntLink temp;
   //insert code here  
   return temp; 
 }
 
-LargeIntLink LargeIntLink::operator%(const LargeIntLength<x>& numberB)
+LargeIntLink LargeIntLink::operator%(const LargeIntLink& numberB)
 {  
-  LargeIntLink temp();
+  LargeIntLink temp;
   //insert code here  
   return temp; 
 }
 
-LargeIntLink LargeIntLink::operator=(const LargeIntLength<x>& numberB)
+LargeIntLink LargeIntLink::operator=(const LargeIntLink& numberB)
 {
-  LargeIntLink temp();
+  LargeIntLink temp;
   //insert code here  
   return temp; 
 }
