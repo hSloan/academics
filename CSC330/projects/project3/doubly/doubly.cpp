@@ -8,7 +8,6 @@
 template <class x>
 doubly<x>::doubly()
 {
-  cout << "empty doubly list created..." << endl; //DEBUG LINE  
   first = NULL; 
   last = NULL;
   length = 0;
@@ -57,19 +56,16 @@ doubly<x>::doubly(const doubly<x>& other)
 template <class x>
 doubly<x>::~doubly()
 {
-  cout << "destructor activated!" << endl; //DEBUG LINE   
     Dnode<x> *temp;
     temp = first;
     first = first->nxt;
     first->bck = NULL;
     delete temp;
     delete first;
-    cout << "node deleted...";  
 
   last = NULL;
   length = 0;
   
-  cout << "destructor completed!\n";  
 }
 
 template <class x>
@@ -187,7 +183,6 @@ void doubly<x>::insert(const x& item)
     first = newNode; 
     last = newNode;
     length++; 
-    cout << "first node added!\n"; //DEBUG LINE
   }
   else
   {
@@ -202,7 +197,6 @@ void doubly<x>::insert(const x& item)
       last = newNode;
     }
     length++;
-    cout << "length incremented!\n"; //DEBUG LINE  
     }
   }
 
