@@ -16,7 +16,7 @@ LargeIntLink LargeIntLink::operator+(const LargeIntLink& numberB)
   else
     temp.length = length;
 
-  cout << "length assigned" << endl; //DEBUG LINE 
+  cout << "length assigned" << length << endl; //DEBUG LINE 
 
   //create a link list of 0's to perform math with. 
   for (int i = 0; i < length; i++)
@@ -81,10 +81,13 @@ LargeIntLink LargeIntLink::operator%(const LargeIntLink& numberB)
   return temp; 
 }
 
+//this function needs revising. DOES NOT PREVENT SELF ASSIGNMENT
 LargeIntLink LargeIntLink::operator=(const LargeIntLink& numberB)
 {
   LargeIntLink temp;
-  //insert code here  
+
+  temp.copy(numberB); 
+
   return temp; 
 }
 
@@ -99,7 +102,9 @@ bool LargeIntLink::operator==(const LargeIntLink& numberB)
   while ((p->nxt != NULL) && (q->nxt != NULL))
   {
     if (p->info != q->info)
+    {
       return false;
+    }
     else 
     {
       p = p->nxt; 
@@ -121,7 +126,9 @@ bool LargeIntLink::operator>=(const LargeIntLink& numberB)
   while ((p->nxt != NULL) && (q->nxt != NULL))
   {
     if (p->info < q->info)
+    {
       return false;
+    }
     else 
     {
       p = p->nxt; 

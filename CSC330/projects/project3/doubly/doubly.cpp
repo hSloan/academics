@@ -74,6 +74,45 @@ bool doubly<x>::isEmpty() const
   return (first == NULL); 
 }
 
+template <class x>
+void doubly<x>::copy(const doubly<x>& other)
+{
+  Dnode<x> *p; // pointer for "other" list 
+  Dnode<x> *q; //pointer for new list
+
+ /* if (first != NULL)
+    clear();*/ 
+
+  if (other.first == NULL)
+  {
+    first = last = NULL; 
+    length = 0; 
+  }
+  else 
+  {
+    p = other.first; 
+    length = other.length;
+    
+    first = new Dnode<x>;
+    first->info = p->info; 
+    first->bck = first->nxt = NULL; 
+    last = first; 
+    p = p->nxt; 
+    
+    while (p != NULL)
+    {
+      q = new Dnode<x>; 
+      q->info = p->info; 
+      q->nxt = NULL; 
+      last->nxt = q; 
+      q->bck = last;
+      last = q; 
+      p = p->nxt; 
+    }
+  }
+}
+
+
 //THIS NEEDS REVISING. RESET LINK LIST TO EMPTY
 template <class x>
 void doubly<x>::clear()
@@ -186,13 +225,13 @@ void doubly<x>::insert(const x& item)
   }
   else
   {
-    current = first;
+    current = last;
 
     while (current != NULL && !found)//while not empty 
     {
       shadow = current; 
       current = current->nxt; 
-      shadow->nxt = newNode; 
+      shadow->nxt = newNode;
       newNode->bck = shadow;
       last = newNode;
     }

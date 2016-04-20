@@ -12,10 +12,10 @@ class LargeIntLink : protected doubly<int>
   {
     Dnode<int> *temp;     //temp walker node 
     temp = bigNum.first;  //set it to first
-    
+
     //this for loop should print all elements in link list according to the link lists length
     //length is defined in doubly class. 
-    for (int i = 0; i < bigNum.length; i++)
+    while (temp != NULL)
     {
       osObject << temp->info;
       temp = temp->nxt; 
@@ -31,15 +31,15 @@ class LargeIntLink : protected doubly<int>
     string str; 
     char ch;
     int count =0; 
-    
+    Dnode<int> *checker; 
     isObject >> str; 
     
-    for (int i = str.length()-1; i > -1; i--)
+    for (int i = 0; i < str.length(); i++)
     {
       ch = str[i];
-      bigNum.insert((int(ch)-48)); //use insert from inherited class combined with char-convert alg
+      bigNum.insert(int(ch)-48); //use insert from inherited class combined with char-convert alg
     }
-
+    
     return isObject;
   }
  

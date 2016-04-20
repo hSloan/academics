@@ -4,7 +4,7 @@ int main()
 {
   LargeIntLink A; 
   LargeIntLink B;
-  LargeIntLink C;  
+  //LargeIntLink C; //arithmetic test object 
 
   cout << "Enter a huge number for A: "; 
   cin >> A; 
@@ -21,9 +21,12 @@ int main()
   else 
     cout << "A is not greater than or equal to B" << endl; 
   
-  // C = A + B; 
-  //cout << A; //test error must be with ostream   
-
+  cout << "first number is: " << A << endl; // test print
+  cout << "second number is: " << B << endl; //test print
+  
+  //C = A + B; 
+  
+  //cout << "your sum is " << C << endl; //arithmetic test print   
   return 0;   
 }
 

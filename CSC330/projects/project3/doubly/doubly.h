@@ -44,6 +44,7 @@ class doubly
   ~doubly(); //destructors  
   const doubly<x>& operator=(const doubly<x> &); 
   bool isEmpty() const; 
+  void copy(const doubly<x>& other);
   void clear(); 
   void print() const; 
   void reversePrint() const; 
