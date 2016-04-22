@@ -80,8 +80,8 @@ void doubly<x>::copy(const doubly<x>& other)
   Dnode<x> *p; // pointer for "other" list 
   Dnode<x> *q; //pointer for new list
 
- /* if (first != NULL)
-    clear();*/ 
+  if (first != NULL)
+    clear(); 
 
   if (other.first == NULL)
   {
@@ -103,7 +103,7 @@ void doubly<x>::copy(const doubly<x>& other)
     {
       q = new Dnode<x>; 
       q->info = p->info; 
-      q->nxt = NULL; 
+      q->nxt = NULL;  
       last->nxt = q; 
       q->bck = last;
       last = q; 
@@ -119,7 +119,7 @@ void doubly<x>::clear()
 {
   Dnode<x> *temp; //destructo pointer
 
-  if (isEmpty() == 0)
+  while (isEmpty() == 0)
   {
     temp = first;
     first = first->nxt;
@@ -238,6 +238,20 @@ void doubly<x>::insert(const x& item)
     length++;
     }
   }
+
+template <class x>
+void doubly<x>::insertFront(const x& item)
+{
+  Dnode<x> *newNode; 
+
+  newNode = new Dnode<x>; 
+  newNode->info = item;
+  newNode->bck = NULL; 
+  newNode->nxt = first; 
+  first->bck = newNode; 
+  first = newNode;
+  length++; 
+}
 
 //revise this function to not operate on a PRE SORTED list
 template <class x>

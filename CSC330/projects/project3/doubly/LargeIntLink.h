@@ -55,6 +55,7 @@ class LargeIntLink : protected doubly<int>
   LargeIntLink operator/(const LargeIntLink& numberB); 
   LargeIntLink operator%(const LargeIntLink& numberB); 
   LargeIntLink operator=(const LargeIntLink& numberB); 
+  LargeIntLink copy(const LargeIntLink& numberB); 
 
   bool operator==(const LargeIntLink& numberB);
   bool operator<(const LargeIntLink& numberB);

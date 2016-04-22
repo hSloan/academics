@@ -2,8 +2,6 @@
 
 LargeIntLink LargeIntLink::operator+(const LargeIntLink& numberB)
 {
-  cout << "OPERATOR+ initiated!" << endl; 
-
   LargeIntLink temp;
   int additionHolder;
   const int carry = 1;
@@ -16,47 +14,76 @@ LargeIntLink LargeIntLink::operator+(const LargeIntLink& numberB)
   else
     temp.length = length;
 
-  cout << "length assigned" << length << endl; //DEBUG LINE 
-
   //create a link list of 0's to perform math with. 
   for (int i = 0; i < length; i++)
     temp.insert(0); 
   
-  cout << "Empty link list created... "<< endl; //DEBUG LINE 
 
-  p = last; 
+  p = last;
   q = numberB.last;
   current = temp.last; 
 
-  while ((p->bck != NULL) && (q->bck != NULL))
+  while ((p != NULL) && (q != NULL))
   {
-    cout << "inside while" << endl; //DEBUG LINE 
-
     additionHolder = (p->info + q->info);
     if (additionHolder > 9)
     {
-      cout << "Carry the 1!" << endl; //DEBUG LINE 
       additionHolder -= 10;            //subtract 10
       current->info += additionHolder; //set the number
-      current->bck->info += carry;    //carry the one!
+      if (current->bck == NULL)
+        temp.insertFront(carry); 
+      else
+        current->bck->info += carry;    //carry the one!
     }
     else 
     {
-      current->info += additionHolder; 
+      current->info += additionHolder;
     }
-    p = p->bck; 
-    q = q->bck; 
-    current = current->bck; 
+    p = p->bck;
+    q = q->bck;
+    current = current->bck;
   }
 
   return temp; 
 }
 
 
+//Figure out how to make negative!--------------------------- 
 LargeIntLink LargeIntLink::operator-(const LargeIntLink& numberB)
 {
   LargeIntLink temp;
-  //insert code here  
+  Dnode<int> *p;
+  Dnode<int> *q;
+  Dnode<int> *current; 
+  
+  if (numberB.length > length)
+    temp.length = numberB.length; 
+  else
+    temp.length = length;
+
+  //create a link list of 0's to perform math with. 
+  for (int i = 0; i < length; i++)
+    temp.insert(0); 
+
+  p = last; 
+  q = numberB.last; 
+  current = temp.last; 
+  
+  while ((p!=NULL) && (q != NULL))
+  {
+    //borrow 1 from next place over
+    if (p->info < q->info)
+    {
+      p->bck->info--; 
+      p->info +=10; 
+    }
+    current->info += (p->info - q->info);
+    
+    p = p->bck;
+    q = q->bck;
+    current = current->bck;  
+  }
+
   return temp; 
 }
 
@@ -87,6 +114,14 @@ LargeIntLink LargeIntLink::operator=(const LargeIntLink& numberB)
   LargeIntLink temp;
 
   temp.copy(numberB); 
+
+  return temp; 
+}
+
+LargeIntLink LargeIntLink::copy(const LargeIntLink& numberB)
+{
+  LargeIntLink temp;
+  temp.copy(numberB);
 
   return temp; 
 }

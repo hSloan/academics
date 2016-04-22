@@ -53,6 +53,7 @@ class doubly
   x getLast() const; 
   //bool search(const x& item); 
   void insert(const x& item); 
+  void insertFront(const x& item); 
   void deleteNode(const x& item); 
 };
     

@@ -24,7 +24,10 @@ int main()
   cout << "first number is: " << A << endl; // test print
   cout << "second number is: " << B << endl; //test print
   
-  //C = A + B; 
+  //C.copy(A); //SEE COPY CONSTRUCTOR FOR NEXT DEBUG STEPS
+ // cout << C; 
+
+  cout << "the sum of the numbers are " << A + B << endl; 
   
   //cout << "your sum is " << C << endl; //arithmetic test print   
   return 0;   
